@@ -22,3 +22,11 @@ def showimg(img: ndarray, name: str) -> None:
     '''
     cv2.imshow(name, img)
     cv2.waitKey(0)
+
+
+def getresolution(img: ndarray) -> tuple:
+    wid = img.shape[1]
+    hgt = img.shape[0]
+    resolution = (wid, hgt)
+    return resolution
+
