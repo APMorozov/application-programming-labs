@@ -23,7 +23,6 @@ def main():
         print("Ошибка обработки изображения в бинарное")
     showimg(img, "Start img")
     showimg(binary_img, "Binary img")
-    print(os.path.join(path_to_folder, "result.jpg"))
     cv2.imwrite(os.path.join(path_to_folder, "result.jpg"), binary_img)
 
 
