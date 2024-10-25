@@ -9,7 +9,7 @@ def process2binary(img: ndarray) -> ndarray:
     :return: binary image
     '''
     gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    ret, binary_img = cv2.threshold(gray_img, 128, 192, cv2.THRESH_OTSU)
+    ret, binary_img = cv2.threshold(gray_img, 128, 255, 0)
     return binary_img
 
 
