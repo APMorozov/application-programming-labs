@@ -1,8 +1,5 @@
 import argparse
 
-DEFAULT_DIR_PATH = "images"
-DEFAULT_CSV_PATH = "annotation.csv"
-
 
 def args_parser() -> str:
     """
