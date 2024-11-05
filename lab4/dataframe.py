@@ -43,12 +43,20 @@ def sortbymaxWH(data: DataFrame, maxW: int, maxH: int) -> DataFrame:
     :param maxH: max height
     :return: sorted DataFrame
     '''
-    newdatatodf = []
-    for i in range(len(data)):
-        if (data.at[i, 'width'] <= maxW) and (data.at[i, 'height'] <= maxH):
-            newdatatodf.append(data.iloc[i])
-    newdata = pd.DataFrame(newdatatodf)
-    return newdata
+    sortdata = data.copy(deep=True)[(data['width'] < maxW) & (data['height'] < maxH)]
+    return sortdata
+
+
+def get_static(data: DataFrame) -> None:
+    '''
+    Print statics width, height and channels
+    :param data: DataFrame
+    :return: None
+    '''
+    print(data['width'].describe())
+    print(data['height'].describe())
+    print(data['channels'].describe())
+
 
 
 def add_resolution(data: DataFrame) -> DataFrame:
@@ -57,13 +65,8 @@ def add_resolution(data: DataFrame) -> DataFrame:
     :param data: DataFrame with width and height columns
     :return: DataFrame with resolution
     '''
-    resolution = []
-    for i in range(len(data)):
-        resolution.append(data.at[i, 'width'] * data.at[i, 'height'])
-    data2 = pd.DataFrame(resolution)
-    data2.columns = ['resolution']
-    resdata = pd.concat([data, data2], axis=1)
-    return resdata
+    data['resolution'] = (data['width'] * data['height'])
+    return data
 
 
 def sort_by_resolution(data: DataFrame) -> DataFrame:
